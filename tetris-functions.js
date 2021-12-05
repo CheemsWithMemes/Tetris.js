@@ -18,17 +18,6 @@ const removeScore = (id) => {
         score.splice(scoreIndex, 1)
     }
 }
-/*
-
-const removeNote = (id) => {
-    const noteIndex = notes.findIndex((note) => note.id === id)
-
-    if (noteIndex > -1) {
-        notes.splice(noteIndex, 1)
-    }
-}
-
-*/
 
 const createMatrix = (w, h) =>{
     const matrix = [];
@@ -129,6 +118,16 @@ const drawMatrix = (matrix, offset) =>{
         });
     });
 }
+const drawMatrixInMenu = (matrix, offset) =>{
+    matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value !== 0){
+                menu_contex.fillStyle = colors[value];
+                menu_contex.fillRect(x + offset.x, y + offset.y, 1, 1);
+            }
+        });
+    });
+}
 
 const draw = () => {
     context.fillStyle = '#000';
@@ -136,6 +135,13 @@ const draw = () => {
 
     drawMatrix(arena, {x:0, y:0});
     drawMatrix(player.matrix, player.pos);
+}
+const drawMenu = () => {
+    menu_contex.fillStyle = '#000';
+    menu_contex.fillRect(0, 0, piecemenu.width, piecemenu.height);
+
+    drawMatrixInMenu(menu, {x:0, y:0});
+    drawMatrixInMenu(next_piece.matrix, {x:1, y:1.5});
 }
 
 const merge = (arena, player) =>{
@@ -200,16 +206,21 @@ const update = (time = 0)  =>{
     lastTime = time;
 
     draw();
+    drawMenu();
     requestAnimationFrame(update);
 }
 
 const updateScore = () =>{
-    document.getElementById('score').innerText = player.score;
+    document.getElementById('score').innerText = `Current Score: ${player.score}`;
 }
 
 const playerReset = () =>{
-    const pieces = 'TJLOSZI';
-    player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
+    picese_list.unshift(createPiece(pieces[pieces.length * Math.random() | 0]))
+    console.log(picese_list);
+    player.matrix = picese_list.pop()
+    next_piece.matrix = picese_list[0];
+    console.log(next_piece.matrix);
+    menu_contex.clearRect(0, 0, piecemenu.width, piecemenu.height);
     player.pos.y = 0;
     player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="/images/block.ico">
+    <link rel="icon" href="images/block.ico">
+    <link rel="icon" href="block.ico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +10,60 @@
 </head>
 <style>
     body{
-    background: #202028;
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 2em;
-    text-align: center;
-}
+        background: #202028;
+        color: #fff;
+        font-family: sans-serif;
+        }
+    #main{
+        font-size: 2em;
+    }
+    ul#menu {
+        margin-top: 0%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        list-style: none;
+        background: rgb(39, 59, 66);
+    }
+    a#menu {
+        margin-top: 0%;
+        font-size: 1em;
+        display: block;
+        text-decoration: none;
+        padding: 1em;
+        color: white;
+        text-align: center;
+    }
+    a:hover#menu {
+        background: rgb(25, 35, 66);
+    }
+    p#name {
+        position: fixed;
+        width: 50%;
+        bottom: 0px 
+    }
 </style>
 <body>
-    <h1>Tetris.js</h1>
-    <p>Everyone's favorite puzzle.</p>
-    <div>
-        <form id = join>
-            <input type = "text" placeholder= "Username" name = "text" size = '20' required>
-            <input type = "password" placeholder= "Password" name = "pass" size = '20' required>
-            <button>play game?</button>
-        </form>
+        <ul id = "menu">
+            <li id = "menu"><a id = "menu" href="index.html">Home</a></li>
+            <li id = "menu"><a id = "menu" href="https://github.com/CheemsWithMemes/Tetris.js">Source Code</a></li>
+            <li id = "menu"><a id = "menu" href="https://www.youtube.com/channel/UC83s4lbvECGHIIA6u3IdDfA">Cheems with Memes</a></li>
+        </ul>
+    <div id = "main">
+        <center>
+        <h1>Tetris.js</h1>
+        <p>Everyone's favorite puzzle.</p>
+            <div>
+                <form id = join>
+                    <input type = "text" placeholder= "Username" name = "text" size = '20' required>
+                    <input type = "password" placeholder= "Password" name = "pass" size = '20' required>
+                    <button>play game?</button>
+                </form>
+            </div>
+        <button id = delete>Delete account</button>
+        </center>
     </div>
-    <button id = delete>Delete account</button>
+    <p id = "name">Made by Alexander Betancourt, Written in JS, HTML and CSS</p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     <script src = "uuidv4.js"></script>
     <script src = "tetris-functions.js"></script>
